@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="ru" class="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Виртуальный помощник для объяснения сложных тем</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="secon-page.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css">
+
+</head>
+
+<body class="font-sans transition-colors duration-300 bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-white">
+    <header class="sticky top-0 z-50 bg-white dark:bg-gray-800 shadow-md">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <img src="../assets/images/school-logo.jpg" alt="Logo" class="h-10 w-auto">
+                    <span class="ml-3 text-xl font-bold dark:text-indigo-400">ЭдуПомощник</span>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-8">
+                    <a class="nav-link hvr-underline-from-left" href="../index.html">Главная</a>
+                    <a class="nav-link hvr-underline-from-left underline" href="/second-page/second"
+                        style="border-bottom: 1px solid black;">Предметы</a>
+                    <a class="nav-link hvr-underline-from-left" href="../thirst-page/thirst.html">Как это работает</a>
+                    <a href="#!" class="nav-link hvr-underline-from-left">Отзывы</a>
+                </nav>
+
+                <!-- Theme Toggle & Mobile Menu Button -->
+                <div class="flex items-center space-x-4">
+                    <button id="theme-toggle"
+                        class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 focus:outline-none flex">
+                        <svg id="sun-icon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-500 hidden"
+                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z">
+                            </path>
+                        </svg>
+                        <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-indigo-600"
+                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z">
+                            </path>
+                        </svg>
+                    </button>
+
+                    <button id="mobile-menu-button"
+                        class="md:hidden p-2 rounded-md text-gray-700 dark:text-gray-300 focus:outline-none">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation Menu -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-2">
+                <div class="flex flex-col space-y-3">
+                    <a class="nav-link hvr-underline-from-left" href="../index.html">Главная</a>
+                    <a class="nav-link hvr-underline-from-left underline" href="/second-page/second"
+                        style="border-bottom: 1px solid black;">Предметы</a>
+                    <a class="nav-link hvr-underline-from-left" href="../thirst-page/thirst.html">Как это работает</a>
+                    <a href="#!" class="nav-link hvr-underline-from-left">Отзывы</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!--  -->
+    <section  style="height: 110vh !important;"  id="header_section" class="relative py-8 md:py-20 bg-blue-100 overflow-hidden">
+        <div style="margin-top: -50px;" class="header_section container mx-auto px-4 py-6 md:py-12">
+            <div class="flex flex-col md:flex-row md:items-center">
+                <!-- Text Content -->
+                <div
+                    class="w-full md:w-1/2 text-center md:text-left mb-8 md:mb-0 animate-on-scroll opacity-0 transform translate-y-8 animate-in">
+                    <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-4 text-gray-800">
+                        Верный помощник в объяснении любых школьных тем
+                    </h1>
+                    <p class="text-base sm:text-lg md:text-xl opacity-90 mb-6 md:mb-8 text-gray-700">
+                        Рассказывает как применить в жизни. Дает объяснения на простых примерах. Практикует
+                    </p>
+                    <button style="border: 1px solid black;"
+                        class="hvr-bounce-to-right try-free-btn bg-white text-black hover:bg-gray-100 font-bold py-2 px-6 md:py-3 md:px-8 rounded-lg shadow-lg transition-all transform hover:scale-105 focus:outline-none">
+                        Попробовать бесплатно
+                    </button>
+                </div>
+
+                <!-- Image -->
+                <div
+                    class="w-full md:w-1/2 flex justify-center items-center opacity-0 transform translate-y-8 animate-in">
+                    <div class="relative w-full max-w-sm sm:max-w-md md:max-w-lg mx-auto">
+                        <img src="../assets/images/secon-page_img.webp" alt="Родитель помогает ребенку с обучением"
+                            class="w-full h-auto rounded-full shadow-2xl transition-transform duration-300 header_img">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <!-- -how-it-works-- -->
+    <section id="how-it-works" class="py-16 bg-white dark:bg-gray-900">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Как это работает?</h2>
+                <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+                    Наш виртуальный помощник создан, чтобы сделать сложные темы простыми и понятными для каждого
+                    ученика.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Step 1 -->
+                <div
+                    class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg shadow-md transition-transform hover:transform hover:scale-105 animate-on-scroll opacity-0 transform translate-y-8">
+                    <div
+                        class="w-12 h-12 bg-indigo-100 dark:bg-indigo-900 rounded-full flex items-center justify-center mb-4 text-indigo-600 dark:text-indigo-400">
+                        <span class="text-xl font-bold">1</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">Определение уровня знаний</h3>
+                    <p class="text-gray-600 dark:text-gray-400">
+                        Мы анализируем ваш текущий уровень знаний и потребности, чтобы предложить наиболее подходящий
+                        материал.
+                    </p>
+                </div>
+
+                <!-- Step 2 -->
+                <div
+                    class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg shadow-md transition-transform hover:transform hover:scale-105 animate-on-scroll opacity-0 transform translate-y-8">
+                    <div
+                        class="w-12 h-12 bg-indigo-100 dark:bg-indigo-900 rounded-full flex items-center justify-center mb-4 text-indigo-600 dark:text-indigo-400">
+                        <span class="text-xl font-bold">2</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">Простые объяснения</h3>
+                    <p class="text-gray-600 dark:text-gray-400">
+                        Предлагаем объяснения на простых примерах, адаптированных под школьную программу и ваш уровень.
+                    </p>
+                </div>
+
+                <!-- Step 3 -->
+                <div
+                    class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg shadow-md transition-transform hover:transform hover:scale-105 animate-on-scroll opacity-0 transform translate-y-8">
+                    <div
+                        class="w-12 h-12 bg-indigo-100 dark:bg-indigo-900 rounded-full flex items-center justify-center mb-4 text-indigo-600 dark:text-indigo-400">
+                        <span class="text-xl font-bold">3</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">Удобное время</h3>
+                    <p class="text-gray-600 dark:text-gray-400">
+                        Взаимодействуйте с помощником в любое удобное время — как с настоящим человеком, без
+                        ограничений.
+                    </p>
+                </div>
+
+                <!-- Step 4 -->
+                <div
+                    class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg shadow-md transition-transform hover:transform hover:scale-105 animate-on-scroll opacity-0 transform translate-y-8">
+                    <div
+                        class="w-12 h-12 bg-indigo-100 dark:bg-indigo-900 rounded-full flex items-center justify-center mb-4 text-indigo-600 dark:text-indigo-400">
+                        <span class="text-xl font-bold">4</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">Обратная связь</h3>
+                    <p class="text-gray-600 dark:text-gray-400">
+                        Оставляйте отзывы о качестве объяснений, чтобы мы могли постоянно улучшать наш сервис.
+                    </p>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <button
+                    class="hvr-bounce-to-top text-black learn-more-btn bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-lg shadow-lg transition-all transform hover:scale-105 focus:outline-none">
+                    Узнать больше
+                </button>
+            </div>
+        </div>
+    </section>
+    <!-- ----topics--- -->
+    <section id="topics" class="py-16 bg-gray-50 dark:bg-gray-800">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Узнать подробнее</h2>
+                <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+                    Наш помощник охватывает все школьные предметы с интерактивными заданиями и понятными объяснениями.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Math Topic -->
+                <div
+                    class="bg-white dark:bg-gray-700 rounded-lg shadow-md p-6 transition-all hover:shadow-xl animate-on-scroll opacity-0 transform translate-y-8">
+                    <div class="flex items-center mb-4">
+                        <div
+                            class="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center text-blue-600 dark:text-blue-400">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="ml-4 text-xl font-semibold text-gray-900 dark:text-white">Математика</h3>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4">
+                        Алгебра, геометрия, тригонометрия и многое другое с простыми объяснениями и примерами из жизни.
+                    </p>
+                    <div class="flex justify-between items-center">
+                        <button
+                            class=" text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 font-medium">
+                            Изучить →
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Physics Topic -->
+                <div
+                    class="bg-white dark:bg-gray-700 rounded-lg shadow-md p-6 transition-all hover:shadow-xl animate-on-scroll opacity-0 transform translate-y-8">
+                    <div class="flex items-center mb-4">
+                        <div
+                            class="w-12 h-12 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center text-green-600 dark:text-green-400">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="ml-4 text-xl font-semibold text-gray-900 dark:text-white">Физика</h3>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4">
+                        Механика, электричество, оптика и другие разделы с интерактивными симуляциями и экспериментами.
+                    </p>
+                    <div class="flex justify-between items-center">
+                        <button
+                            class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 font-medium">
+                            Изучить →
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Literature Topic -->
+                <div
+                    class="bg-white dark:bg-gray-700 rounded-lg shadow-md p-6 transition-all hover:shadow-xl animate-on-scroll opacity-0 transform translate-y-8">
+                    <div class="flex items-center mb-4">
+                        <div
+                            class="w-12 h-12 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center text-purple-600 dark:text-purple-400">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="ml-4 text-xl font-semibold text-gray-900 dark:text-white">Литература</h3>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4">
+                        Анализ произведений, литературные жанры, биографии авторов и творческие задания для глубокого
+                        понимания.
+                    </p>
+                    <div class="flex justify-between items-center">
+                        <button
+                            class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 font-medium">
+                            Изучить →
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Chemistry Topic -->
+                <div
+                    class="bg-white dark:bg-gray-700 rounded-lg shadow-md p-6 transition-all hover:shadow-xl animate-on-scroll opacity-0 transform translate-y-8">
+                    <div class="flex items-center mb-4">
+                        <div
+                            class="w-12 h-12 bg-red-100 dark:bg-red-900 rounded-full flex items-center justify-center text-red-600 dark:text-red-400">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="ml-4 text-xl font-semibold text-gray-900 dark:text-white">Химия</h3>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4">
+                        Органическая и неорганическая химия, химические реакции и эксперименты с визуализациями.
+                    </p>
+                    <div class="flex justify-between items-center">
+                        <button
+                            class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 font-medium">
+                            Изучить →
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Biology Topic -->
+                <div
+                    class="bg-white dark:bg-gray-700 rounded-lg shadow-md p-6 transition-all hover:shadow-xl animate-on-scroll opacity-0 transform translate-y-8">
+                    <div class="flex items-center mb-4">
+                        <div
+                            class="w-12 h-12 bg-teal-100 dark:bg-teal-900 rounded-full flex items-center justify-center text-teal-600 dark:text-teal-400">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="ml-4 text-xl font-semibold text-gray-900 dark:text-white">Биология</h3>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4">
+                        Анатомия, физиология, ботаника, зоология и экология с интерактивными моделями и схемами.
+                    </p>
+                    <div class="flex justify-between items-center">
+                        <button
+                            class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 font-medium">
+                            Изучить →
+                        </button>
+                    </div>
+                </div>
+
+                <!-- History Topic -->
+                <div
+                    class="bg-white dark:bg-gray-700 rounded-lg shadow-md p-6 transition-all hover:shadow-xl animate-on-scroll opacity-0 transform translate-y-8">
+                    <div class="flex items-center mb-4">
+                        <div
+                            class="w-12 h-12 bg-yellow-100 dark:bg-yellow-900 rounded-full flex items-center justify-center text-yellow-600 dark:text-yellow-400">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="ml-4 text-xl font-semibold text-gray-900 dark:text-white">История</h3>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4">
+                        Отечественная и мировая история с хронологией, историческими фактами и увлекательными
+                        рассказами.
+                    </p>
+                    <div class="flex justify-between items-center">
+                        <button
+                            class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 font-medium">
+                            Изучить →
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-10">
+                <button
+                    class="hvr-curl-bottom-right bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-lg shadow-lg transition-all transform hover:scale-105 focus:outline-none">
+                    Узнать больше
+                </button>
+            </div>
+        </div>
+    </section>
+    <!-- progress -->
+    <section id="progress" class="py-16 bg-white dark:bg-gray-900 relative overflow-hidden">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Персональный прогресс</h2>
+                <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+                    Отслеживайте достижения своих детей и получайте рекомендации для улучшения понимания сложных тем.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Progress Dashboard -->
+                <div
+                    class="md:col-span-2 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 animate-on-scroll opacity-0 transform translate-y-8">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">Учебный дашборд</h3>
+
+                    <!-- Progress bars -->
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Математика</span>
+                                <span class="text-sm font-medium text-indigo-600 dark:text-indigo-400">78%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                                <div class="bg-indigo-600 h-2 rounded-full" style="width: 78%"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Физика</span>
+                                <span class="text-sm font-medium text-indigo-600 dark:text-indigo-400">65%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                                <div class="bg-indigo-600 h-2 rounded-full" style="width: 65%"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Химия</span>
+                                <span class="text-sm font-medium text-indigo-600 dark:text-indigo-400">92%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                                <div class="bg-indigo-600 h-2 rounded-full" style="width: 92%"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium text-gray-700 dark:text-gray-300">История</span>
+                                <span class="text-sm font-medium text-indigo-600 dark:text-indigo-400">42%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                                <div class="bg-indigo-600 h-2 rounded-full" style="width: 42%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent activity -->
+                    <div class="mt-8">
+                        <h4 class="text-lg font-medium mb-4 text-gray-900 dark:text-white">Недавняя активность</h4>
+                        <div class="space-y-3">
+                            <div class="flex items-center p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                                <div
+                                    class="flex-shrink-0 w-8 h-8 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center text-green-600 dark:text-green-400">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                                <div class="ml-3">
+                                    <p class="text-sm font-medium text-gray-900 dark:text-white">Завершен урок по теме
+                                        "Квадратные уравнения"</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">2 часа назад</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                                <div
+                                    class="flex-shrink-0 w-8 h-8 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center text-blue-600 dark:text-blue-400">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2">
+                                        </path>
+                                    </svg>
+                                </div>
+                                <div class="ml-3">
+                                    <p class="text-sm font-medium text-gray-900 dark:text-white">Получена новая задача
+                                        по химии</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Вчера</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                                <div
+                                    class="flex-shrink-0 w-8 h-8 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center text-purple-600 dark:text-purple-400">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                </div>
+                                <div class="ml-3">
+                                    <p class="text-sm font-medium text-gray-900 dark:text-white">Проведено 45 минут
+                                        изучения истории</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">2 дня назад</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Achievement Cards -->
+                <div class="space-y-6 animate-on-scroll opacity-0 transform translate-y-8">
+                    <!-- Learning streak -->
+                    <div class="bg-gradient-to-r from-indigo-500 to-purple-600 text-white rounded-lg shadow-lg p-6">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-xl font-bold">Серия вашего ребенка</h3>
+                            <div class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
+                                    </path>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="mt-6 text-4xl font-bold">7 дней</div>
+                        <p class="mt-2 text-white text-opacity-80">Ежедневный интерес к учебе</p>
+                    </div>
+
+                    <!-- Rewards -->
+                    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
+                        <h3 class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">Награды</h3>
+                        <div class="flex flex-wrap gap-4">
+                            <div
+                                class="w-16 h-16 bg-yellow-100 dark:bg-yellow-900 rounded-lg flex items-center justify-center text-yellow-600 dark:text-yellow-400 relative">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
+                                    </path>
+                                </svg>
+                                <div
+                                    class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                                    3</div>
+                            </div>
+
+                            <div
+                                class="w-16 h-16 bg-green-100 dark:bg-green-900 rounded-lg flex items-center justify-center text-green-600 dark:text-green-400">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z">
+                                    </path>
+                                </svg>
+                            </div>
+
+                            <div
+                                class="w-16 h-16 bg-purple-100 dark:bg-purple-900 rounded-lg flex items-center justify-center text-purple-600 dark:text-purple-400">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z">
+                                    </path>
+                                </svg>
+                            </div>
+
+                            <div
+                                class="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center text-blue-600 dark:text-blue-400">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <button
+                            class="hvr-bounce-to-right w-full mt-4 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-200 font-medium py-2 px-4 rounded-md transition-colors">
+                            Смотреть все награды
+                        </button>
+                    </div>
+
+                    <!-- Recommended -->
+                    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
+                        <h3 class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">Рекомендуем</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center">
+                                    <div
+                                        class="w-8 h-8 bg-red-100 dark:bg-red-900 rounded-full flex items-center justify-center text-red-600 dark:text-red-400">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
+                                            viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z">
+                                            </path>
+                                        </svg>
+                                    </div>
+                                    <div class="ml-3">
+                                        <p class="text-sm font-medium text-gray-900 dark:text-white">Химические элементы
+                                        </p>
+                                    </div>
+                                </div>
+                                <button class="text-xs text-indigo-600 dark:text-indigo-400 hover:underline">
+                                    Начать
+                                </button>
+                            </div>
+
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center">
+                                    <div
+                                        class="w-8 h-8 bg-yellow-100 dark:bg-yellow-900 rounded-full flex items-center justify-center text-yellow-600 dark:text-yellow-400">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
+                                            viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="ml-3">
+                                        <p class="text-sm font-medium text-gray-900 dark:text-white">История XX века</p>
+                                    </div>
+                                </div>
+                                <button class="text-xs text-indigo-600 dark:text-indigo-400 hover:underline">
+                                    Начать
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- parent-dashboard -->
+    <section id="parent-dashboard" class="py-16 bg-gray-50 dark:bg-gray-800">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Родительский кабинет</h2>
+                <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+                    Отслеживайте успехи вашего ребенка и получайте персонализированные рекомендации для его
+                    развития.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div class="animate-on-scroll opacity-0 transform translate-y-8">
+                    <img src="../assets/images/family.webp" alt="Интерфейс родительского кабинета"
+                        class="rounded-lg shadow-xl">
+                </div>
+
+                <div class="space-y-6 animate-on-scroll opacity-0 transform translate-y-8">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 mt-1">
+                            <div
+                                class="w-8 h-8 bg-indigo-100 dark:bg-indigo-900 rounded-full flex items-center justify-center text-indigo-600 dark:text-indigo-400">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
+                                    </path>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Отслеживание
+                                прогресса</h3>
+                            <p class="mt-1 text-gray-600 dark:text-gray-400">
+                                Подробная статистика успеваемости по предметам, темам и навыкам с возможностью
+                                видеть динамику и сравнивать с предыдущими периодами.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 mt-1">
+                            <div
+                                class="w-8 h-8 bg-indigo-100 dark:bg-indigo-900 rounded-full flex items-center justify-center text-indigo-600 dark:text-indigo-400">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z">
+                                    </path>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Рекомендации</h3>
+                            <p class="mt-1 text-gray-600 dark:text-gray-400">
+                                Персональные рекомендации по дополнительным занятиям, материалам и подходам к
+                                обучению, основанные на анализе успеваемости ребенка.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 mt-1">
+                            <div
+                                class="w-8 h-8 bg-indigo-100 dark:bg-indigo-900 rounded-full flex items-center justify-center text-indigo-600 dark:text-indigo-400">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9">
+                                    </path>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Уведомления</h3>
+                            <p class="mt-1 text-gray-600 dark:text-gray-400">
+                                Настраиваемые уведомления о новых достижениях, выполненных заданиях, трудностях
+                                и успехах ребенка в изучении различных тем.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 mt-1">
+                            <div
+                                class="w-8 h-8 bg-indigo-100 dark:bg-indigo-900 rounded-full flex items-center justify-center text-indigo-600 dark:text-indigo-400">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
+                                    </path>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Расписание занятий
+                            </h3>
+                            <p class="mt-1 text-gray-600 dark:text-gray-400">
+                                Создавайте и контролируйте расписание занятий вашего ребенка с возможностью
+                                установки напоминаний и целей по каждому предмету.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12 text-center">
+                <button
+                    class="hvr-bounce-to-right bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-lg shadow-lg transition-all transform hover:scale-105 focus:outline-none">
+                    Активировать родительский кабинет
+                </button>
+            </div>
+        </div>
+    </section>
+    <!-- Testimonials Section -->
+    <section id="testimonials"
+        style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;">
+        <div class="text-center mb-12"><br><br><br>
+            <h2 class="text-3xl font-bold text-indigo-600 mb-4"
+                style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;">Отзывы
+                родителей и детей</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">Узнайте, как наш виртуальный помощник
+                помогает семьям в обучении</p>
+        </div>
+        <!--  -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12" id="testimonials-container">
+            <!-- Testimonial 1 -->
+            <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
+                <div class="flex items-center mb-4">
+                    <img src="../assets/images/mother1.jpg" alt="Анна К." class="h-12 w-12 rounded-full object-cover">
+                    <div class="ml-4">
+                        <h4 class="font-bold text-gray-800">Анна К.</h4>
+                        <p class="text-gray-600 text-sm">Мама ученика</p>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <span class="text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </span>
+                </div>
+                <p class="text-gray-700">Благодаря этому сервису мой сын перестал бояться математики. Объяснения
+                    настолько понятные, что даже я разобралась в темах, которые в школе казались очень сложными.</p>
+            </div>
+
+            <!-- Testimonial 2 -->
+            <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
+                <div class="flex items-center mb-4">
+                    <img src="../assets/images/child1.jpg" alt="Миша П." class="h-12 w-12 rounded-full object-cover">
+                    <div class="ml-4">
+                        <h4 class="font-bold text-gray-800">Миша П .</h4>
+                        <p class="text-gray-600 text-sm">Ученик</p>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <span class="text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </span>
+                </div>
+                <p class="text-gray-700">Я постоянно что-то узнаю новое для себя и мне интересно учиться. Особенно
+                    нравится, что виртуальный репетитор может общаться через колонку Алиса</p>
+            </div>
+
+            <!-- Testimonial 3 -->
+            <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
+                <div class="flex items-center mb-4">
+                    <img src="../assets/images/father1.jpg" alt="Дмитрий В."
+                        class="h-12 w-12 rounded-full object-cover">
+                    <div class="ml-4">
+                        <h4 class="font-bold text-gray-800">Дмитрий В.</h4>
+                        <p class="text-gray-600 text-sm">Отец</p>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <span class="text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </span>
+                </div>
+                <p class="text-gray-700">Виртуальный репетитор для меня стал палочкой выручалочкой. Я работаю до поздна
+                    и ночная проверка уроков превращалась в войну с сыном, а с виртуальным репетитором ему не приходится
+                    ждать меня с работы</p>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <button style="color: white !important;"
+                class="load-more-btn bg-red-300 hover:bg-red-500 text-white font-medium py-2 px-6 rounded-md transition-colors duration-300 mx-auto">
+                Показать больше отзывов
+            </button><br><br><br><br>
+        </div>
+    </section>
+    <!-- Support Section -->
+    <section id="support" class="py-16 px-4 sm:px-6 lg:px-8 bg-white transition-colors duration-300">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-indigo-600 mb-4">Поддержка и контакт</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Наша команда готова помочь вам в любое время
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div class="animate-on-scroll opacity-0 transform translate-y-8">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Связаться с нами</h3>
+                    <form class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Имя</label>
+                            <input type="text" id="name"
+                                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                            <input type="email" id="email"
+                                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        </div>
+                        <div>
+                            <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">Тема</label>
+                            <input type="text" id="subject"
+                                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Сообщение</label>
+                            <textarea id="message" rows="4"
+                                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
+                        </div>
+                        <button type="submit"
+                            class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-6 rounded-md transition-colors duration-300">
+                            Отправить сообщение
+                        </button>
+                    </form>
+                </div>
+
+                <div class="animate-on-scroll opacity-0 transform translate-y-8">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Часто задаваемые вопросы</h3>
+                    <div class="space-y-4" id="faq-container">
+                        <div class="border border-gray-200 rounded-lg">
+                            <button
+                                class="faq-btn flex justify-between items-center w-full px-4 py-3 text-left font-medium text-gray-800 hover:bg-gray-50 focus:outline-none"
+                                data-target="faq-1">
+                                <span>Как работает виртуальный помощник?</span>
+                                <i class="fas fa-chevron-down text-indigo-500 transition-transform duration-300"></i>
+                            </button>
+                            <div id="faq-1" class="faq-content hidden px-4 pb-4">
+                                <p class="text-gray-600">Наш виртуальный помощник использует современные
+                                    технологии искусственного интеллекта, чтобы адаптироваться к уровню знаний
+                                    ученика и объяснять сложные темы на понятном языке, используя примеры из
+                                    реальной жизни и интерактивные элементы.</p>
+                            </div>
+                        </div>
+
+                        <div class="border border-gray-200 rounded-lg">
+                            <button
+                                class="faq-btn flex justify-between items-center w-full px-4 py-3 text-left font-medium text-gray-800 hover:bg-gray-50 focus:outline-none"
+                                data-target="faq-2">
+                                <span>Сколько стоит подписка?</span>
+                                <i class="fas fa-chevron-down text-indigo-500 transition-transform duration-300"></i>
+                            </button>
+                            <div id="faq-2" class="faq-content hidden px-4 pb-4">
+                                <p class="text-gray-600">Мы предлагаем различные тарифные планы, начиная от
+                                    бесплатного с ограниченным функционалом до премиум-подписки с полным
+                                    доступом ко всем возможностям. Зарегистрируйтесь, чтобы получить доступ к
+                                    бесплатному периоду и ознакомиться с сервисом.</p>
+                            </div>
+                        </div>
+
+                        <div class="border border-gray-200 rounded-lg">
+                            <button
+                                class="faq-btn flex justify-between items-center w-full px-4 py-3 text-left font-medium text-gray-800 hover:bg-gray-50 focus:outline-none"
+                                data-target="faq-3">
+                                <span>Какие предметы охватывает сервис?</span>
+                                <i class="fas fa-chevron-down text-indigo-500 transition-transform duration-300"></i>
+                            </button>
+                            <div id="faq-3" class="faq-content hidden px-4 pb-4">
+                                <p class="text-gray-600">Наш сервис охватывает все основные школьные предметы:
+                                    математику, физику, химию, биологию, историю, географию, литературу и языки.
+                                    Мы постоянно расширяем список тем и улучшаем качество объяснений.</p>
+                            </div>
+                        </div>
+
+                        <div class="border border-gray-200 rounded-lg">
+                            <button
+                                class="faq-btn flex justify-between items-center w-full px-4 py-3 text-left font-medium text-gray-800 hover:bg-gray-50 focus:outline-none"
+                                data-target="faq-4">
+                                <span>Можно ли использовать сервис на разных устройствах?</span>
+                                <i class="fas fa-chevron-down text-indigo-500 transition-transform duration-300"></i>
+                            </button>
+                            <div id="faq-4" class="faq-content hidden px-4 pb-4">
+                                <p class="text-gray-600">Да, наш сервис полностью адаптивен и работает на любых
+                                    устройствах: компьютерах, планшетах и смартфонах. Прогресс обучения
+                                    синхронизируется между всеми устройствами, так что вы можете продолжить с
+                                    того места, где остановились.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 bg-indigo-50 p-6 rounded-lg shadow-sm">
+                        <h4 class="font-bold text-gray-800 mb-2">Нужна дополнительная помощь?</h4>
+                        <p class="text-gray-600 mb-4">Свяжитесь с нашей службой поддержки:</p>
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-envelope text-indigo-500 mr-2"></i>
+                            <span>support@virtualtutor.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer style="color: white !important;" class="bg-blue-600 text-white py-6">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
+            <div class="text-center md:text-left">
+                <p class="text-lg font-semibold">© 2025 Виртуальный помощник</p>
+                <p class="text-sm mt-2">Все права защищены.</p>
+            </div>
+
+            <div class="mt-4 md:mt-0 text-center md:text-left">
+                <a href="#" class="block hover:underline">Пользовательское соглашение</a>
+                <a href="#" class="block hover:underline">Политика конфиденциальности</a>
+                <a href="#" class="block hover:underline">Свяжитесь с нами</a>
+            </div>
+
+            <div class="mt-4 md:mt-0">
+                <p class="text-sm">Свяжитесь с нами:</p>
+                <a href="mailto:info@edu-helper.com" class="block text-lg font-semibold hover:underline">
+                    info@edu-helper.com
+                </a>
+            </div>
+        </div>
+    </footer>
+    <script src="second-page.js">
+        // Tekshirish: oldin foydalanuvchi saqlagan mavzu bormi?
+        if (localStorage.getItem("theme") === "dark") {
+            document.documentElement.classList.add("dark");
+            sunIcon.classList.remove("hidden");
+            moonIcon.classList.add("hidden");
+        } else {
+            document.documentElement.classList.remove("dark");
+            sunIcon.classList.add("hidden");
+            moonIcon.classList.remove("hidden");
+        }
+
+        // Tugmani bosganda tema almashishi
+        themeToggle.addEventListener("click", () => {
+            document.documentElement.classList.toggle("dark");
+
+            if (document.documentElement.classList.contains("dark")) {
+                localStorage.setItem("theme", "dark");
+                sunIcon.classList.remove("hidden");
+                moonIcon.classList.add("hidden");
+            } else {
+                localStorage.setItem("theme", "light");
+                sunIcon.classList.add("hidden");
+                moonIcon.classList.remove("hidden");
+            }
+        });
+        document.getElementById('theme-toggle').addEventListener('click', function () {
+            document.documentElement.classList.toggle('dark');
+            document.getElementById('sun-icon').classList.toggle('hidden');
+            document.getElementById('moon-icon').classList.toggle('hidden');
+        });
+
+        document.getElementById('mobile-menu-button').addEventListener('click', function () {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+    </script>
+    <style>
+        .darking.active {
+            display: block;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #4A5568;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: #5A67D8;
+        }
+
+        .dark .nav-link {
+            color: #CBD5E0;
+        }
+
+        .dark .nav-link:hover {
+            color: #A3BFFA;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: #1a202c;
+        }
+
+        .dark body {
+            color: black;
+        }
+
+        header,
+        footer,
+        section {
+            background-color: #ffffff;
+            color: black !important;
+        }
+
+        .dark header,
+        .dark footer,
+        .dark section {
+            background-color: black;
+            color: white !important;
+        }
+    </style>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Виртуальный репетитор</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.0.0/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        @media(max-width:640px) {
+            .for_media-text {
+                font-size: 10px;
+                width: auto !important;
+            }
+
+        }
+        @media(max-width:768px){
+            #hero{
+                height: auto !important;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 relative">
+    <!-- Header Section -->
+    <header class="bg-gradient-to-r from-purple-600 to-indigo-700 text-white shadow-lg fixed z-20 w-full">
+        <div class="container mx-auto px-4 py-5">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <i class="fas fa-brain text-3xl mr-3"></i>
+                    <h1 class="text-2xl font-bold">ТалантУм</h1>
+                </div>
+                <!-- Mobil menyuni ochish tugmasi -->
+
+                <!-- Navigatsiya menyusi -->
+                <nav id="menu"
+                    class="hidden md:flex flex-col md:flex-row md:space-x-6 space-y-2 md:space-y-0 text-center absolute md:relative bg-indigo-700 md:bg-transparent w-full md:w-auto left-0 top-16 md:top-0 p-4 md:p-0 ">
+                    <a href="../index.html" class="block transition-colors hvr-underline-from-left">Главная</a>
+                    <a href="../second-page/second.html"
+                        class="block hover:text-purple-200 transition-colors hvr-underline-from-left">Предметы</a>
+                    <a href="../thirst-page/thirst.html"
+                        class="block hover:text-purple-200 transition-colors border-b border-black hvr-underline-from-left">Как
+                        это работает</a>
+                    <a href="#"
+                        class="block hover:text-purple-200 transition-colors  hvr-underline-from-left">Отзывы</a>
+                </nav>
+                <div class="hidden md:block">
+                    <a href="#"
+                        class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-red-700 transition duration-300 transform hover:scale-105 shadow-md text-sm lg:text-base flex items-center"
+                        style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px);">
+                        <span>Попробовать бесплатно</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20"
+                            fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="py-16 md:py-24 bg-gradient-to-b from-indigo-700 to-indigo-500 text-white h-dvh">
+        <div class="container mx-auto px-4">
+            <div style="margin-top: 10px;" class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 mt-16 md:mt-0">
+                    <h1 class="text-3xl md:text-5xl font-bold mb-6">Виртуальный репетитор раскроет таланты ребенка</h1>
+                    <p class="text-xl md:text-2xl mb-8">Определит интересы. Применит интересы в учебе. Разовьет таланты
+                    </p>
+                    <button
+                        class="bg-yellow-400 hover:bg-yellow-300 text-indigo-900 font-bold px-8 py-3 rounded-full shadow-lg transition-all transform hover:scale-105 hvr-curl-bottom-right">
+                        Начать бесплатно
+                    </button>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <img width="600" src="../assets/images/talant.webp" alt="Дети развивают таланты"
+                        class="header_img rounded-lgshadow-2xl max-w-full h-auto" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Как это работает?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-blue-50 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
+                    <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mb-4 mx-auto">
+                        <i class="fas fa-search text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-center mb-3">Определяет интересы</h3>
+                    <p class="text-gray-600 text-center">Выявляем индивидуальные интересы и способности ребенка с
+                        помощью интерактивных тестов</p>
+                </div>
+                <div class="bg-green-50 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
+                    <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mb-4 mx-auto">
+                        <i class="fas fa-book-open text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-center mb-3">Адаптирует материалы</h3>
+                    <p class="text-gray-600 text-center">Предлагаем персонализированные материалы для развития выбранных
+                        талантов</p>
+                </div>
+                <div class="bg-purple-50 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
+                    <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mb-4 mx-auto">
+                        <i class="fas fa-clock text-purple-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-center mb-3">Удобное время</h3>
+                    <p class="text-gray-600 text-center">Возможность учиться в своем темпе, в любое удобное время</p>
+                </div>
+                <div class="bg-amber-50 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
+                    <div class="bg-amber-100 w-16 h-16 rounded-full flex items-center justify-center mb-4 mx-auto">
+                        <i class="fas fa-award text-amber-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-center mb-3">Отслеживает прогресс</h3>
+                    <p class="text-gray-600 text-center">Наблюдайте за успехами ребенка и получайте рекомендации для
+                        дальнейшего развития</p>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <button
+                    class="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-3 rounded-full font-bold shadow-md transition-all">
+                    Узнать больше
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Все курсы и направления</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow">
+                    <div class="h-40 bg-gradient-to-r from-red-400 to-red-600 flex items-center justify-center">
+                        <i class="fas fa-palette text-white text-5xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3">Изобразительное искусство</h3>
+                        <p class="text-gray-600 mb-4">Раскройте творческий потенциал ребенка через рисование, живопись и
+                            другие виды искусства</p>
+                        <div class="flex items-center text-gray-500 text-sm">
+                            <i class="fas fa-tasks mr-2"></i>
+                            <span>15 интерактивных заданий</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow">
+                    <div class="h-40 bg-gradient-to-r from-blue-400 to-blue-600 flex items-center justify-center">
+                        <i class="fas fa-calculator text-white text-5xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3">Математика и логика</h3>
+                        <p class="text-gray-600 mb-4">Развивайте математические способности через увлекательные задачи и
+                            головоломки</p>
+                        <div class="flex items-center text-gray-500 text-sm">
+                            <i class="fas fa-tasks mr-2"></i>
+                            <span>25 интерактивных заданий</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow">
+                    <div class="h-40 bg-gradient-to-r from-green-400 to-green-600 flex items-center justify-center">
+                        <i class="fas fa-microscope text-white text-5xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3">Естественные науки</h3>
+                        <p class="text-gray-600 mb-4">Открывайте тайны природы через эксперименты и интересные факты из
+                            биологии, химии и физики</p>
+                        <div class="flex items-center text-gray-500 text-sm">
+                            <i class="fas fa-tasks mr-2"></i>
+                            <span>20 интерактивных заданий</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow">
+                    <div class="h-40 bg-gradient-to-r from-purple-400 to-purple-600 flex items-center justify-center">
+                        <i class="fas fa-language text-white text-5xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3">Иностранные языки</h3>
+                        <p class="text-gray-600 mb-4">Изучайте языки через игры, диалоги и интерактивные упражнения с
+                            носителями языка</p>
+                        <div class="flex items-center text-gray-500 text-sm">
+                            <i class="fas fa-tasks mr-2"></i>
+                            <span>30 интерактивных заданий</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow">
+                    <div class="h-40 bg-gradient-to-r from-yellow-400 to-yellow-600 flex items-center justify-center">
+                        <i class="fas fa-music text-white text-5xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3">Музыка и ритм</h3>
+                        <p class="text-gray-600 mb-4">Развивайте музыкальный слух, чувство ритма и базовые навыки игры
+                            на инструментах</p>
+                        <div class="flex items-center text-gray-500 text-sm">
+                            <i class="fas fa-tasks mr-2"></i>
+                            <span>18 интерактивных заданий</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow">
+                    <div class="h-40 bg-gradient-to-r from-pink-400 to-pink-600 flex items-center justify-center">
+                        <i class="fas fa-code text-white text-5xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3">Программирование</h3>
+                        <p class="text-gray-600 mb-4">Основы кодирования и алгоритмического мышления в игровой форме для
+                            детей</p>
+                        <div class="flex items-center text-gray-500 text-sm">
+                            <i class="fas fa-tasks mr-2"></i>
+                            <span>22 интерактивных заданий</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Progress Section -->
+    <section id="progress" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Персональный прогресс вашего ребенка</h2>
+            <div class="flex flex-col lg:flex-row gap-8">
+                <div class="lg:w-1/2">
+                    <div class="bg-indigo-50 p-8 rounded-xl shadow-md">
+                        <h3 class="text-2xl font-semibold mb-6 text-indigo-800">Дашборд достижений</h3>
+                        <div class="space-y-6">
+                            <div class="bg-white p-4 rounded-lg shadow-sm">
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium text-gray-700">Математика</span>
+                                    <span class="text-indigo-600 font-medium">85%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                    <div class="bg-indigo-600 h-2.5 rounded-full" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg shadow-sm">
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium text-gray-700">Английский язык</span>
+                                    <span class="text-indigo-600 font-medium">72%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                    <div class="bg-indigo-600 h-2.5 rounded-full" style="width: 72%"></div>
+                                </div>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg shadow-sm">
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium text-gray-700">Рисование</span>
+                                    <span class="text-indigo-600 font-medium">90%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                    <div class="bg-indigo-600 h-2.5 rounded-full" style="width: 90%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-8">
+                            <h4 class="font-semibold text-lg mb-3 text-gray-800">Заработанные награды:</h4>
+                            <div class="flex flex-wrap gap-3">
+                                <div class="bg-amber-100 p-2 rounded-full w-12 h-12 flex items-center justify-center">
+                                    <i class="fas fa-star text-amber-500"></i>
+                                </div>
+                                <div class="bg-amber-100 p-2 rounded-full w-12 h-12 flex items-center justify-center">
+                                    <i class="fas fa-trophy text-amber-500"></i>
+                                </div>
+                                <div class="bg-amber-100 p-2 rounded-full w-12 h-12 flex items-center justify-center">
+                                    <i class="fas fa-medal text-amber-500"></i>
+                                </div>
+                                <div class="bg-gray-200 p-2 rounded-full w-12 h-12 flex items-center justify-center">
+                                    <i class="fas fa-lock text-gray-400"></i>
+                                </div>
+                                <div class="bg-gray-200 p-2 rounded-full w-12 h-12 flex items-center justify-center">
+                                    <i class="fas fa-lock text-gray-400"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 mt-8 lg:mt-0">
+                    <div class="bg-white p-8 rounded-xl shadow-md">
+                        <h3 class="text-2xl font-semibold mb-6 text-gray-800">Рекомендации</h3>
+                        <div class="space-y-4">
+                            <div class="border-l-4 border-green-500 pl-4 py-2">
+                                <h4 class="font-semibold">Отличный прогресс в математике!</h4>
+                                <p class="text-gray-600">Рекомендуем попробовать курс "Логические головоломки" для
+                                    развития навыков.</p>
+                            </div>
+                            <div class="border-l-4 border-blue-500 pl-4 py-2">
+                                <h4 class="font-semibold">Развивайте навыки языка</h4>
+                                <p class="text-gray-600">Для улучшения результатов по английскому языку, предлагаем
+                                    дополнительные разговорные практики.</p>
+                            </div>
+                            <div class="border-l-4 border-purple-500 pl-4 py-2">
+                                <h4 class="font-semibold">Новые курсы по искусству</h4>
+                                <p class="text-gray-600">Ваш ребенок показывает прекрасные результаты в рисовании. Попробуйте новый курс по цифровому искусству.</p>
+                            </div>
+                        </div>
+                        <div class="mt-8 p-4 bg-indigo-50 rounded-lg">
+                            <h4 class="font-semibold mb-2">Следующая цель:</h4>
+                            <div class="flex items-center">
+                                <div class="bg-indigo-100 p-2 rounded-full mr-3">
+                                    <i class="fas fa-flag-checkered text-indigo-600"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium">Завершить проект "Мой первый анимационный фильм"</p>
+                                    <div class="w-full bg-gray-200 rounded-full h-2 mt-2">
+                                        <div class="bg-indigo-600 h-2 rounded-full" style="width: 65%"></div>
+                                    </div>
+                                    <p class="text-xs text-gray-500 mt-1">65% выполнено</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Parents Section -->
+    <section id="parents" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Родительский кабинет</h2>
+            <div style="margin-top: 50px;" class="flex flex-col md:flex-row gap-8">
+                <div class="md:w-1/2">
+                    <img src="../assets/images/planshet.webp" alt="Родители с планшетом"
+                        class="rounded-xl shadow-lg mx-auto" />
+                </div>
+                <div class="md:w-1/2 flex flex-col justify-center">
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-chart-line text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold mb-2">Отслеживание прогресса</h3>
+                                <p class="text-gray-600">Подробная статистика и аналитика успехов ребенка в различных
+                                    областях обучения</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-green-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-lightbulb text-green-600"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold mb-2">Персональные рекомендации</h3>
+                                <p class="text-gray-600">Получайте советы по дополнительным занятиям, курсам и
+                                    материалам для развития талантов</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-purple-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-bell text-purple-600"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold mb-2">Система уведомлений</h3>
+                                <p class="text-gray-600">Настройте уведомления о новых достижениях, курсах и важных
+                                    событиях в обучении</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-amber-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-comments text-amber-600"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold mb-2">Связь с наставниками</h3>
+                                <p class="text-gray-600">Прямая коммуникация с преподавателями и консультации по
+                                    вопросам обучения</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-indigo-600 mb-4" style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;">Отзывы родителей и детей</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">Узнайте, как наш виртуальный помощник
+                помогает семьям в обучении</p>
+        </div>
+        <!--  -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12" id="testimonials-container">
+            <!-- Testimonial 1 -->
+            <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
+                <div class="flex items-center mb-4">
+                    <img src="../assets/images/mother1.jpg" alt="Анна К." class="h-12 w-12 rounded-full object-cover">
+                    <div class="ml-4">
+                        <h4 class="font-bold text-gray-800">Анна К.</h4>
+                        <p class="text-gray-600 text-sm">Мама ученика</p>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <span class="text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </span>
+                </div>
+                <p class="text-gray-700">Благодаря этому сервису мой сын перестал бояться математики. Объяснения
+                    настолько понятные, что даже я разобралась в темах, которые в школе казались очень сложными.</p>
+            </div>
+
+            <!-- Testimonial 2 -->
+            <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
+                <div class="flex items-center mb-4">
+                    <img src="../assets/images/child1.jpg" alt="Миша П." class="h-12 w-12 rounded-full object-cover">
+                    <div class="ml-4">
+                        <h4 class="font-bold text-gray-800">Миша П .</h4>
+                        <p class="text-gray-600 text-sm">Ученик</p>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <span class="text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </span>
+                </div>
+                <p class="text-gray-700">Я постоянно что-то узнаю новое для себя и мне интересно учиться. Особенно
+                    нравится, что виртуальный репетитор может общаться через колонку Алиса</p>
+            </div>
+
+            <!-- Testimonial 3 -->
+            <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
+                <div class="flex items-center mb-4">
+                    <img src="../assets/images/father1.jpg" alt="Дмитрий В." class="h-12 w-12 rounded-full object-cover">
+                    <div class="ml-4">
+                        <h4 class="font-bold text-gray-800">Дмитрий В.</h4>
+                        <p class="text-gray-600 text-sm">Отец</p>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <span class="text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </span>
+                </div>
+                <p class="text-gray-700">Виртуальный репетитор для меня стал палочкой выручалочкой. Я работаю до поздна и ночная проверка уроков превращалась в войну с сыном, а с виртуальным репетитором ему не приходится ждать меня с работы</p>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <button class="load-more-btn bg-red-300 hover:bg-red-500 text-white font-medium py-2 px-6 rounded-md transition-colors duration-300 mx-auto">
+                Показать больше отзывов
+            </button>
+        </div>
+    </section><br><br><br>
+
+    <!-- Support Section -->
+    <section id="support" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Поддержка и контакт</h2>
+            <div class="flex flex-col lg:flex-row gap-8">
+                <div class="lg:w-1/2">
+                    <div class="bg-white p-8 rounded-xl shadow-md">
+                        <h3 class="text-2xl font-semibold mb-6">Часто задаваемые вопросы</h3>
+                        <div class="space-y-4">
+                            <div class="border-b pb-4">
+                                <button class="flex justify-between items-center w-full text-left font-medium">
+                                    <span>Как определяются таланты ребенка?</span>
+                                </button>
+                                <div class="mt-2 text-gray-600">
+                                    Мы используем комбинацию интерактивных тестов, анализа интересов и наблюдения за
+                                    прогрессом в разных областях для выявления сильных сторон и талантов ребенка.
+                                </div>
+                            </div>
+                            <div class="border-b pb-4">
+                                <button class="flex justify-between items-center w-full text-left font-medium">
+                                    <span>Сколько времени нужно уделять занятиям?</span>
+                                </button>
+                                <div class="mt-2 text-gray-600">
+                                    Рекомендуемое время - 20-30 минут в день, 3-4 раза в неделю. Одн
+                                    ако все зависит от возраста и индивидуальных особенностей ребенка. Платформа
+                                    адаптируется под темп обучения.
+                                </div>
+                            </div>
+                            <div class="border-b pb-4">
+                                <button class="flex justify-between items-center w-full text-left font-medium">
+                                    <span>Как родители могут участвовать в процессе?</span>
+                                </button>
+                                <div class="mt-2 text-gray-600">
+                                    Родители имеют доступ к специальному кабинету, где могут отслеживать прогресс,
+                                    получать рекомендации и общаться с наставниками. Мы также предлагаем материалы для
+                                    совместных занятий.
+                                </div>
+                            </div>
+                            <div class="border-b pb-4">
+                                <button class="flex justify-between items-center w-full text-left font-medium">
+                                    <span>Подходит ли платформа для дошкольников?</span>
+                                </button>
+                                <div class="mt-2 text-gray-600">
+                                    Да, у нас есть специальные программы для детей от 4 лет, с учетом их возрастных
+                                    особенностей и интересов.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-1/2">
+                    <div class="bg-white p-8 rounded-xl shadow-md">
+                        <h3 class="text-2xl font-semibold mb-6">Связаться с нами</h3>
+                        <form>
+                            <div class="mb-4">
+                                <label for="name" class="block text-gray-700 mb-2">Ваше имя</label>
+                                <input type="text" id="name"
+                                    class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                            </div>
+                            <div class="mb-4">
+                                <label for="email" class="block text-gray-700 mb-2">Email</label>
+                                <input type="email" id="email"
+                                    class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                            </div>
+                            <div class="mb-4">
+                                <label for="subject" class="block text-gray-700 mb-2">Тема</label>
+                                <select id="subject"
+                                    class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                    <option>Вопрос о курсах</option>
+                                    <option>Техническая поддержка</option>
+                                    <option>Предложения по улучшению</option>
+                                    <option>Другое</option>
+                                </select>
+                            </div>
+                            <div class="mb-6">
+                                <label for="message" class="block text-gray-700 mb-2">Сообщение</label>
+                                <textarea id="message" rows="4"
+                                    class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
+                            </div>
+                            <button type="submit"
+                                class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg font-semibold shadow-md transition-colors w-full">Отправить
+                                сообщение</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-blue-600 text-white py-6">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
+            <div class="text-center md:text-left">
+                <p class="text-lg font-semibold">© 2025 Виртуальный помощник</p>
+                <p class="text-sm mt-2">Все права защищены.</p>
+            </div>
+
+            <div class="mt-4 md:mt-0 text-center md:text-left">
+                <a href="#" class="block hover:underline">Пользовательское соглашение</a>
+                <a href="#" class="block hover:underline">Политика конфиденциальности</a>
+                <a href="#" class="block hover:underline">Свяжитесь с нами</a>
+            </div>
+
+            <div class="mt-4 md:mt-0">
+                <p class="text-sm">Свяжитесь с нами:</p>
+                <a href="mailto:info@edu-helper.com" class="block text-lg font-semibold hover:underline">
+                    info@edu-helper.com
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Theme Toggle -->
+    <div class="fixed bottom-5 right-5">
+        <button class="bg-gray-800 text-white p-3 rounded-full w-[50px] shadow-lg hover:bg-gray-700 transition-colors">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <!--  -->
+    <script src="thirst-page.js"></script>
+    <script>
+        document.getElementById('menu-toggle').addEventListener('click', function () {
+            var menu = document.getElementById('menu');
+            menu.classList.toggle('hidden');
+            menu.classList.toggle('block');
+        });
+    </script>
+    <!-- link -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</body>
+
+</html>

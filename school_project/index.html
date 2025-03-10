@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Виртуальный репетитор</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#FF5733',
+                        'secondary': '#FFC300',
+                        'navy': '#1e2c56',
+                        'coral': '#ff8a8a',
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .burger-line {
+            transition: all 0.3s ease-in-out;
+        }
+
+        .menu-open .line1 {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .menu-open .line2 {
+            opacity: 0;
+        }
+
+        .menu-open .line3 {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        .mobile-menu {
+            transform: translateY(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .mobile-menu.show {
+            transform: translateY(0);
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-item::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: red;
+            transition: width 0.3s ease;
+        }
+
+        .nav-item:hover::after {
+            width: 100%;
+        }
+
+        .btn-animate {
+            transition: all 0.3s ease;
+        }
+
+        .btn-animate:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .subject_btn:hover {
+            color: red;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+    <header class="bg-white shadow-md w-full fixed top-0 z-50"
+        style="padding: 0px; backdrop-filter: blur(0.1587px); background: rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.004) 0px 0.3174px 0.7936px;">
+        <div class="container mx-auto px-4 max-w-full md:max-w-6xl">
+            <nav class="flex justify-between items-center py-3">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="#" class="text-2xl font-bold text-red-500">VirtualTutor</a>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex space-x-4 lg:space-x-8">
+                    <a style="border-bottom: 1px solid black;"
+                        class="nav-item text-gray-800 hover:text-red-500 transition duration-300" href="index.html"
+                        style="border-bottom: 1px solid black;">Главная</a>
+                    <a class="nav-item text-gray-800 hover:text-red-500 transition duration-300"
+                        href="second-page/second.html">Как это
+                        работает?</a>
+                    <a class="nav-item text-gray-800 hover:text-red-500 transition duration-300"
+                        href="thirst-page/thirst.html">Предметы</a>
+                    <a href="#!" class="nav-item text-gray-800 hover:text-red-500 transition duration-300">Отзывы</a>
+                </div>
+
+                <!-- Login Button -->
+                <div class="hidden md:block">
+                    <a href="#"
+                        class="bg-red-600 text-white px-6 py-2 rounded-full hover:bg-red-700 transition duration-300 transform hover:scale-105 shadow-md text-sm lg:text-base flex items-center"
+                        style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px);">
+                        <span>Попробовать бесплатно</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20"
+                            fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Burger Menu Button - Improved for accessibility -->
+                <button class="md:hidden focus:outline-none" id="burger-menu-btn" aria-label="Open menu"
+                    aria-expanded="false"
+                    style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px);">
+                    <div class="w-6 h-0.5 bg-gray-800 mb-1.5 transition-all duration-300"></div>
+                    <div class="w-6 h-0.5 bg-gray-800 mb-1.5 transition-all duration-300"></div>
+                    <div class="w-6 h-0.5 bg-gray-800 transition-all duration-300"></div>
+                </button>
+            </nav>
+
+            <!-- Mobile Menu - Fixed positioning for better UX -->
+            <div class="mobile-menu md:hidden bg-white fixed left-0 right-0 top-16 shadow-lg transition-all duration-300 z-40 hidden"
+                id="mobile-menu">
+                <div class="flex flex-col p-4 space-y-3">
+                    <a style="border-bottom: 1px solid black; padding: 10px 0;" href="index.html"
+                        class="text-gray-800 hover:text-red-500 transition duration-300 px-2 py-1 hover:bg-gray-100 rounded">Главная</a>
+                        <a href="second-page/second.html"
+                        class="text-gray-800 hover:text-red-500 transition duration-300 px-2 py-1 hover:bg-gray-100 rounded">Как
+                        это работает?</a>
+                    <a href="thirst-page/thirst.html"
+                        class="text-gray-800 hover:text-red-500 transition duration-300 px-2 py-1 hover:bg-gray-100 rounded"
+                        style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px);">Предметы
+                    </a>
+                    
+                    <a href="#!"
+                        class="text-gray-800 hover:text-red-500 transition duration-300 px-2 py-1 hover:bg-gray-100 rounded">Отзывы</a>
+                    <a href="#!"
+                        class="bg-red-600 text-white px-6 py-3 rounded-full text-center hover:bg-red-700 transition">
+                        Попробовать бесплатно
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Hero Section -->
+    <section class="bg-red-500 text-white pt-20 h-auto min-h-screen flex items-center">
+        <div class="container mx-auto px-4 max-w-screen-lg">
+            <div class="flex flex-col md:flex-row items-center justify-between mt-10 md:mb-[100px]">
+                <!-- Text Content -->
+                <div class="w-full md:w-1/2 text-center md:text-left mb-6 md:mb-0">
+                    <div class="text-[17px] uppercase tracking-wider mb-2">Для школьников 1-11 классов</div>
+                    <h1 class="text-xl sm:text-2xl md:text-3xl xl:text-5xl mb-3 md:mb-6">
+                        Делегируй выполнение домашней работы виртуальному репетитору
+                    </h1>
+                    <p class="mb-6 text-sm sm:text-base lg:text-lg max-w-md mx-auto md:mx-0">
+                        Вовлекает. Отвечает на вопросы. Объясняет непонятные темы, помогает и проверяет домашние
+                        задания.
+                    </p>
+                    <div class="flex justify-center md:justify-start space-x-4">
+                        <a href="#"
+                            class="inline-block bg-white text-red-500 px-6 py-3 rounded-full font-medium hover:bg-gray-100 transition duration-300 transform hover:scale-105 shadow-md text-sm sm:text-base">
+                            Попробовать бесплатно
+                        </a>
+                        <a href="#education-section"
+                            class="inline-block bg-transparent border border-white text-white px-6 py-3 rounded-full font-medium hover:bg-white hover:text-red-500 transition duration-300 transform hover:scale-105 text-sm sm:text-base">
+                            Как это работает
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Image -->
+                <div class="w-full md:w-1/2 flex justify-center">
+                    <img src="assets/images/hero-cover-1.png" alt="Tutor" class="max-w-full h-auto md:max-w-md">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="education-section bg-white py-16 px-4 md:px-8 lg:px-16 overflow-hidden" id="education-section" >
+        <div class="max-w-7xl mx-auto">
+            <!-- Header -->
+            <div class="header-container mb-12 md:mb-20">
+                <h2
+                    class="get-quality-title text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mt-2 animate-slide-up">
+                    Как это работает?
+                </h2>
+                <p class="conflict-description text-gray-600 max-w-2xl mt-4 text-sm md:text-base animate-fade-in-delay">
+                    Способен объяснить любой предмет
+                </p>
+            </div>
+
+            <!-- Content Container -->
+            <div class="content-container flex flex-col md:flex-row items-center gap-8 md:gap-12 lg:gap-16">
+                <!-- Image Container -->
+                <div class="image-section w-full md:w-1/2 relative animate-slide-right">
+                    <div
+                        class="background-blob absolute inset-0 bg-gradient-to-r from-pink-400 to-purple-400 rounded-3xl opacity-80 transform -rotate-6">
+                    </div>
+                    <div class="image-container relative z-10 p-4">
+                        <div class="placeholder-wrapper rounded-xl overflow-hidden aspect-square md:aspect-auto">
+                            <img src="assets/images/col-md-6.png" alt="">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Features Container -->
+                <div class="features-section w-full md:w-1/2 animate-slide-left">
+                    <div class="section-header mb-8">
+                        <h3 class="text-2xl md:text-3xl font-bold text-gray-800 mb-3">Виртуальный персональный репетитор
+                        </h3>
+                        <p class="text-gray-600 text-sm md:text-base">Персональный образовательный опыт для каждого
+                            ребенка</p>
+                    </div>
+
+                    <!-- Feature Items -->
+                    <div class="feature-items space-y-6 md:space-y-8">
+                        <!-- Feature 1 -->
+                        <div class="feature-item flex items-start gap-4 animate-fade-in-up" data-delay="0.1">
+                            <div
+                                class="feature-number flex-shrink-0 w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center">
+                                <span class="text-pink-500 font-semibold">01</span>
+                            </div>
+                            <div class="feature-content">
+                                <h4 class="feature-title text-lg font-semibold text-gray-800 mb-1">Определяет уровень
+                                </h4>
+                                <h3 class="feature-description text-gray-600 text-sm">знаний ребенка</h3>
+                                <h3>
+                                    <p>Индивидуальный подход к каждому ученику</p>
+                                </h3>
+                            </div>
+                        </div>
+
+                        <!-- Feature 2 -->
+                        <div class="feature-item flex items-start gap-4 animate-fade-in-up" data-delay="0.2">
+                            <div
+                                class="feature-number flex-shrink-0 w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center">
+                                <span class="text-pink-500 font-semibold">02</span>
+                            </div>
+                            <div class="feature-content">
+                                <h4 class="feature-title text-lg font-semibold text-gray-800 mb-1">Индивидуальный подход
+                                </h4>
+                                <h3 class="feature-description text-gray-600 text-sm">к каждому ученику</h3>
+                                <p>Адаптируется под школьную программу</p>
+                            </div>
+                        </div>
+
+                        <!-- Feature 3 -->
+                        <div class="feature-item flex items-start gap-4 animate-fade-in-up" data-delay="0.3">
+                            <div
+                                class="feature-number flex-shrink-0 w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center">
+                                <span class="text-pink-500 font-semibold">03</span>
+                            </div>
+                            <div class="feature-content mb-4">
+                                <h4 class="feature-title text-lg font-semibold text-gray-800 mb-1">Помогает <br>
+                                    </h4>
+                                <h3 class="feature-description text-gray-600 text-sm">домашней работой</h3>
+                                <p>В режиме живого диалога</p>
+                            </div>
+                        </div>
+                        <a href="second-page/second.html" class="mt-[20px]">
+                            <button class="bg-[#DC2626] text-white px-6 py-3 rounded-[30px]">
+                                Узнать подробнее
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- subject section start -->
+    <!-- Subjects Section -->
+    <div class="practice-advice-container w-full py-16 px-4 md:px-8 lg:px-16">
+        <!-- Header Section -->
+        <div class="header-section text-center mb-16">
+            <h5 class="text-red-500 text-lg font-medium mb-3 opacity-0 translate-y-4 transition-all duration-700 ease-out"
+                id="practice-advice-title"
+                style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;">Все
+                учебные предметы
+            </h5>
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mb-6 opacity-0 translate-y-4 transition-all duration-700 delay-300 ease-out"
+                id="experts-title"
+                style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;">
+                Виртуальный персональный репетитор
+            </h2>
+            <p class="max-w-2xl mx-auto text-gray-600 text-base md:text-lg opacity-0 translate-y-4 transition-all duration-700 delay-500 ease-out"
+                id="description-text"
+                style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;">
+                Способен объяснить любой предмет
+            </p>
+        </div>
+
+        <!-- Cards Container with proper spacing -->
+        <div class="cards-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12 px-4 md:px-8 lg:px-16">
+            <!-- Card 1 -->
+            <div class="card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-500 hover:shadow-xl opacity-0 translate-y-8"
+                id="card-1"
+                style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;">
+                <div class="card-icon bg-red-500 w-16 h-16 mx-auto mt-8 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-graduation-cap text-white text-2xl"></i>
+                </div>
+                <div class="card-content p-8 text-center">
+                    <h4 class="text-lg font-bold text-gray-800 mb-4">Математика</h4>
+                    <div class="divider h-0.5 w-12 bg-red-500 mx-auto mb-4"></div>
+                    <p class="text-gray-600 mb-6">
+                        Алгебра, геометрия и многое другое
+                    </p>
+                </div>
+            </div>
+        
+            <!-- Card 2 -->
+            <div class="card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-500 hover:shadow-xl opacity-0 translate-y-8"
+                id="card-2"
+                style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;">
+                <div class="card-icon bg-red-500 w-16 h-16 mx-auto mt-8 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-briefcase text-white text-2xl"></i>
+                </div>
+                <div class="card-content p-8 text-center">
+                    <h4 class="text-lg font-bold text-gray-800 mb-4">Русский язык
+                    </h4>
+                    <div class="divider h-0.5 w-12 bg-red-500 mx-auto mb-4"></div>
+                    <p class="text-gray-600 mb-6">
+                        Грамматика, сочинения, тесты
+                    </p>
+                </div>
+            </div>
+        
+            <!-- Card 3 -->
+            <div class="card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-500 hover:shadow-xl opacity-0 translate-y-8"
+                id="card-3"
+                style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;">
+                <div class="card-icon bg-red-500 w-16 h-16 mx-auto mt-8 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-book text-white text-2xl"></i>
+                </div>
+                <div class="card-content p-8 text-center">
+                    <h4 class="text-lg font-bold text-gray-800 mb-4">Физика
+                    </h4>
+                    <div class="divider h-0.5 w-12 bg-red-500 mx-auto mb-4"></div>
+                    <p class="text-gray-600 mb-6">
+                        Механика, электричество, оптика
+                    </p>
+                </div>
+            </div>
+        
+            <!-- Card 4 -->
+            <div class="card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-500 hover:shadow-xl opacity-0 translate-y-8"
+                id="card-4"
+                style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;">
+                <div class="card-icon bg-red-500 w-16 h-16 mx-auto mt-8 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-book-open text-white text-2xl"></i>
+                </div>
+                <div class="card-content p-8 text-center">
+                    <h4 class="text-lg font-bold text-gray-800 mb-4">История</h4>
+                    <div class="divider h-0.5 w-12 bg-red-500 mx-auto mb-4"></div>
+                    <p class="text-gray-600 mb-6">
+                        От древности до современности
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- "Другие школьные предметы" yozuvi barcha kartalar ostida bir marta joylashtirilgan -->
+        <div class="text-center mt-8 mb-8">
+            <a href="#" class="bg-red-500 hover:bg-red-600 text-white font-medium py-2 px-6 rounded-lg transition-all duration-300">Другие школьные предметы</a>
+        </div>
+    </div>
+    <!-- subject section end -->
+    <!--Section -->
+    <div class="practice-advice-container w-full py-16 px-4 md:px-8 lg:px-16">
+        <!-- Header Section -->
+        <div class="header-section text-center mb-16">
+            <h5 class="text-red-500 text-lg font-medium mb-3 opacity-0 translate-y-4 transition-all duration-700 ease-out"
+                id="practice-advice-title"
+                style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;">
+                Достижения ученика
+            </h5>
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mb-6 opacity-0 translate-y-4 transition-all duration-700 delay-300 ease-out"
+                id="experts-title"
+                style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;">
+                Персональный прогресс обучения
+            </h2>
+            <p class="max-w-2xl mx-auto text-gray-600 text-base md:text-lg opacity-0 translate-y-4 transition-all duration-700 delay-500 ease-out"
+                id="description-text"
+                style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;">
+                Отслеживайте свои успехи и развивайте навыки
+            </p>
+        </div>
+
+        <!-- Cards Container with proper spacing -->
+        <div class="cards-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12 px-4 md:px-8 lg:px-16">
+            <!-- Card 1: Achievements -->
+            <div class="card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-500 hover:shadow-xl opacity-0 translate-y-8"
+                id="card-1"
+                style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;">
+                <div class="card-icon bg-red-500 w-16 h-16 mx-auto mt-8 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-trophy text-white text-2xl"></i>
+                </div>
+                <div class="card-content p-8 text-center">
+                    <h4 class="text-lg font-bold text-gray-800 mb-4">Достижения</h4>
+                    <div class="divider h-0.5 w-12 bg-red-500 mx-auto mb-4"></div>
+                    <p class="text-gray-600 mb-6">
+                        12 из 20 наград получено
+                    </p>
+                    <div class="badges-container flex flex-wrap justify-center gap-2 mb-4">
+                        <span class="badge bg-red-100 text-red-500 rounded-full px-3 py-1 text-xs">Мастер алгебры</span>
+                        <span class="badge bg-red-100 text-red-500 rounded-full px-3 py-1 text-xs">Грамотей</span>
+                        <span class="badge bg-red-100 text-red-500 rounded-full px-3 py-1 text-xs">Историк</span>
+                    </div><br>
+                    <a href="#"><span class="text-gray-500 text-[14px] subject_btn">Все достижения</span></a>
+                </div>
+            </div>
+
+            <!-- Card 2: Rewards -->
+            <div class="card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-500 hover:shadow-xl opacity-0 translate-y-8"
+                id="card-2"
+                style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;">
+                <div class="card-icon bg-red-500 w-16 h-16 mx-auto mt-8 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-medal text-white text-2xl"></i>
+                </div>
+                <div class="card-content p-8 text-center">
+                    <h4 class="text-lg font-bold text-gray-800 mb-4">Награды
+                    </h4>
+                    <div class="divider h-0.5 w-12 bg-red-500 mx-auto mb-4"></div>
+                    <p class="text-gray-600 mb-6">
+                        Заработано 570 баллов
+                    </p>
+                    <div class="rewards-icons flex justify-center gap-4 mb-4">
+                        <i class="fas fa-star text-yellow-500 text-xl"></i>
+                        <i class="fas fa-certificate text-yellow-500 text-xl"></i>
+                        <i class="fas fa-crown text-yellow-500 text-xl"></i>
+                    </div><br><br>
+                    <a href="#"><span class="text-gray-500 text-[14px] subject_btn">Обменять баллы</span></a>
+                </div>
+            </div>
+
+            <!-- Card 3: Recommendations -->
+            <div class="card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-500 hover:shadow-xl opacity-0 translate-y-8"
+                id="card-3"
+                style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;">
+                <div class="card-icon bg-red-500 w-16 h-16 mx-auto mt-8 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-lightbulb text-white text-2xl"></i>
+                </div>
+                <div class="card-content p-8 text-center">
+                    <h4 class="text-lg font-bold text-gray-800 mb-4">Рекомендации
+                    </h4>
+                    <div class="divider h-0.5 w-12 bg-red-500 mx-auto mb-4"></div>
+                    <p class="text-gray-600 mb-6">
+                        Персонализированные советы
+                    </p>
+                    <ul style="margin-top: -20px; margin-left: 30px; text-align: start;"
+                        class="text-left text-sm text-gray-600 mb-4">
+                        <li class="mb-2">• Практикуй уравнения</li>
+                        <li class="mb-2">• Повтори теоремы</li>
+                        <li>• Пройди тест по оптике</li>
+                    </ul>
+                    <a href="#" class="mt-[100px]">
+                        <span class="text-gray-500 text-[14px] subject_btn">Подробный план</span></a>
+                </div>
+            </div>
+
+            <!-- Card 4: Gamification -->
+            <div class="card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-500 hover:shadow-xl opacity-0 translate-y-8"
+                id="card-4"
+                style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;">
+                <div class="card-icon bg-red-500 w-16 h-16 mx-auto mt-8 rounded-lg flex items-center justify-center">
+                    <i style="cursor: pointer;" onclick="Function()" class="fas fa-gamepad text-white text-2xl"></i>
+                </div>
+                <div class="card-content p-8 text-center">
+                    <h4 style="cursor: pointer;" onclick="Function()" class="text-lg font-bold text-gray-800 mb-4">
+                        Игровой прогресс</h4>
+                    <div class="divider h-0.5 w-12 bg-red-500 mx-auto mb-4"></div>
+                    <p class="text-gray-600 mb-6">
+                        Текущие вызовы и задания
+                    </p>
+                    <div class="challenge bg-gray-100 rounded p-2 mb-4 text-left">
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm font-medium">Серия побед</span>
+                            <span class="text-red-500 text-sm">7 дней</span>
+                        </div>
+                        <div class="w-full bg-gray-300 rounded-full h-1.5 mt-1">
+                            <div class="bg-red-500 h-1.5 rounded-full mt-[11px]" style="width: 70% !important"></div>
+                        </div>
+                    </div><br>
+                    <a href="#"><span class="text-gray-500 text-[14px] subject_btn">Все задания</span></a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- Parent Panel Section -->
+    <section id="parent-panel" class="bg-gray-100 py-16">
+        <div class="container mx-auto px-4 py-12">
+            <div class="w-full mx-auto bg-white shadow-lg rounded-xl p-8">
+                <div class="flex flex-wrap justify-between items-center mb-10">
+                    <h1 class="text-4xl font-bold text-red-600">Родительский кабинет</h1>
+                </div>
+
+                <!-- Основные блоки -->
+                <div class="grid md:grid-cols-2 gap-6">
+                    <!-- Прогресс ребенка -->
+                    <div class="bg-red-50 p-6 rounded-lg">
+                        <h3 class="font-semibold text-xl mb-4 flex items-center">
+                            <span class="text-3xl mr-3">📊</span>
+                            Прогресс ребенка
+                        </h3>
+                        <canvas id="progressChart" class="w-full h-48"></canvas>
+                    </div>
+
+                    <!-- Рекомендации -->
+                    <div class="bg-green-50 p-6 rounded-lg">
+                        <h3 class="font-semibold text-xl mb-4 flex items-center">
+                            <span class="text-3xl mr-3">🚀</span>
+                            Рекомендации
+                        </h3>
+                        <div id="recommendationsList">
+                            <div class="mb-3 bg-white p-3 rounded shadow-sm">
+                                Дополнительные занятия по математике
+                            </div>
+                            <div class="mb-3 bg-white p-3 rounded shadow-sm">
+                                Курс по развитию навыков чтения
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Настройка уведомлений -->
+                <div class="mt-12 bg-gray-100 p-6 rounded-lg">
+                    <h2 class="text-2xl font-bold mb-6">Настройка уведомлений</h2>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <label class="flex items-center space-x-3">
+                            <input type="checkbox" class="h-5 w-5" checked>
+                            <span>Уведомления о достижениях</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="checkbox" class="h-5 w-5" checked>
+                            <span>Уведомления о домашних заданиях</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> <br><br><br><br>
+    <!-- Testimonials Section -->
+    <section id="testimonials"
+        style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-indigo-600 mb-4"
+                style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;">Отзывы
+                родителей и детей</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">Узнайте, как наш виртуальный помощник
+                помогает семьям в обучении</p>
+        </div>
+        <!--  -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12" id="testimonials-container">
+            <!-- Testimonial 1 -->
+            <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
+                <div class="flex items-center mb-4">
+                    <img src="assets/images/mother1.jpg" alt="Анна К." class="h-12 w-12 rounded-full object-cover">
+                    <div class="ml-4">
+                        <h4 class="font-bold text-gray-800">Анна К.</h4>
+                        <p class="text-gray-600 text-sm">Мама ученика</p>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <span class="text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </span>
+                </div>
+                <p class="text-gray-700">Благодаря этому сервису мой сын перестал бояться математики. Объяснения
+                    настолько понятные, что даже я разобралась в темах, которые в школе казались очень сложными.</p>
+            </div>
+
+            <!-- Testimonial 2 -->
+            <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
+                <div class="flex items-center mb-4">
+                    <img src="assets/images/child1.jpg" alt="Миша П." class="h-12 w-12 rounded-full object-cover">
+                    <div class="ml-4">
+                        <h4 class="font-bold text-gray-800">Миша П .</h4>
+                        <p class="text-gray-600 text-sm">Ученик</p>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <span class="text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </span>
+                </div>
+                <p class="text-gray-700">Я постоянно что-то узнаю новое для себя и мне интересно учиться. Особенно
+                    нравится, что виртуальный репетитор может общаться через колонку Алиса</p>
+            </div>
+
+            <!-- Testimonial 3 -->
+            <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
+                <div class="flex items-center mb-4">
+                    <img src="assets/images/father1.jpg" alt="Дмитрий В." class="h-12 w-12 rounded-full object-cover">
+                    <div class="ml-4">
+                        <h4 class="font-bold text-gray-800">Дмитрий В.</h4>
+                        <p class="text-gray-600 text-sm">Отец</p>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <span class="text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </span>
+                </div>
+                <p class="text-gray-700">Виртуальный репетитор для меня стал палочкой выручалочкой. Я работаю до поздна
+                    и ночная проверка уроков превращалась в войну с сыном, а с виртуальным репетитором ему не приходится
+                    ждать меня с работы</p>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <button
+                class="load-more-btn bg-red-300 hover:bg-red-500 text-white font-medium py-2 px-6 rounded-md transition-colors duration-300 mx-auto">
+                Показать больше отзывов
+            </button>
+        </div>
+    </section><br><br><br>
+    <!-- Conditions Section -->
+    <section class="py-12 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-8">
+                <h2 class="text-2xl font-semibold">Кому это подходит</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="font-semibold mb-3">Ученикам</h3>
+                    <p class="text-gray-700 text-sm">Школьникам с 1 по 11 класс, которым трудно вовлекаться в процесс
+                        выполнения домашней работы</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="font-semibold mb-3">Родителям</h3>
+                    <p class="text-gray-700 text-sm">Которым трудно оказывать помощь в решении домашних работ</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="font-semibold mb-3">Учителям</h3>
+                    <p class="text-gray-700 text-sm">Которые хотят улучшить закрепление учебного материала и интерес к
+                        обучению</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-red-600 text-white py-6">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
+            <div class="text-center md:text-left">
+                <p class="text-lg font-semibold">© 2025 Виртуальный помощник</p>
+                <p class="text-sm mt-2">Все права защищены.</p>
+            </div>
+
+            <div class="mt-4 md:mt-0 text-center md:text-left">
+                <a href="#" class="block hover:underline">Пользовательское соглашение</a>
+                <a href="#" class="block hover:underline">Политика конфиденциальности</a>
+                <a href="#" class="block hover:underline">Свяжитесь с нами</a>
+            </div>
+
+            <div class="mt-4 md:mt-0">
+                <p class="text-sm">Свяжитесь с нами:</p>
+                <a href="mailto:info@edu-helper.com" class="block text-lg font-semibold hover:underline">
+                    info@edu-helper.com
+                </a>
+            </div>
+        </div>
+    </footer>
+    <!-- moon -->
+    <div class="fixed bottom-5 right-5">
+        <button
+            class="bg-gray-800 text-white p-3 rounded-ful w-[50px] rounded-full shadow-lg hover:bg-gray-700 transition-colors">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+
+    <script>
+        // Burger menu functionality
+        const burgerMenuBtn = document.getElementById('burger-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        burgerMenuBtn.addEventListener('click', function () {
+            this.classList.toggle('burger-active');
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Hide mobile menu when clicking outside
+        document.addEventListener('click', function (event) {
+            if (!burgerMenuBtn.contains(event.target) && !mobileMenu.contains(event.target)) {
+                burgerMenuBtn.classList.remove('burger-active');
+                mobileMenu.classList.remove('active');
+            }
+        });
+
+        // Initialize GSAP ScrollTrigger
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Header scroll animation
+        gsap.to("header", {
+            scrollTrigger: {
+                trigger: "body",
+                start: "top top",
+                end: "50px",
+                scrub: true
+            },
+            boxShadow: "0 10px 25px rgba(0,0,0,0.1)",
+            background: "rgba(255,255,255,0.95)",
+            backdropFilter: "blur(5px)",
+            padding: "5px 0"
+        });
+    </script>
+    <script src="js/header.js"></script>
+    <script src="js/section.js"></script>
+    <script src="js/section2.js"></script>
+    <script src="first-page.js"></script>
+    <script src="first-page_main.js"></script>
+    <script src="first-page.js"></script>
+    <style>
+    </style>
+</body>
+
+</html>
